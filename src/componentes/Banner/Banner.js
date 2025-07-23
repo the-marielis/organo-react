@@ -1,6 +1,6 @@
 import './Banner.css';
 
-function Banner() {
+export const Banner = () => { //arrow functions: exporta o elemento Banner através de uma constante
     return (
         <header className="banner">
             <img src="/imagens/banner.png"
@@ -8,5 +8,3 @@ function Banner() {
         </header>
     );
 }
-
-export default Banner;
