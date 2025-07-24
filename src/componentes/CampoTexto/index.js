@@ -1,7 +1,9 @@
 import './CampoTexto.css'
 
 const CampoTexto = (props) => {
-    const placeholderModificada = `${props.placeholder}...`
+
+    const placeholderModificada = `${props.placeholder}...` 
+
     const aoDigitado = (evento) => {
         props.aoAlterado(evento.target.value) // chama a função que vem do componente pai
     }
@@ -11,7 +13,7 @@ const CampoTexto = (props) => {
             <label>
                 {props.label}
             </label>
-            <input valor={props.valor} onChange={aoDigitado} required={props.obrigatorio} placeholder={placeholderModificada}/>
+            <input value={props.valor} onChange={aoDigitado} required={props.obrigatorio} placeholder={placeholderModificada}/>
         </div>
     )
 }
