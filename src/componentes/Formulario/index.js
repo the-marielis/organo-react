@@ -5,16 +5,6 @@ import { useState } from "react";
 import "./Formulario.css";
 
 const Formulario = (props) => {
-  const times = [
-    "Programação",
-    "Front-End",
-    "Data Science",
-    "Devops",
-    "UX e Design",
-    "Mobile",
-    "Inovação e Gestão",
-  ];
-
   // Variável para armazenar o valor do input
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState(""); // cria um objeto para ler (valor) e para escrever (setValor)
@@ -22,14 +12,17 @@ const Formulario = (props) => {
   const [time, setTime] = useState("");
 
   const aoSalvar = (evento) => {
-    evento.preventDefault()
+    evento.preventDefault();
     props.aoColaboradorCadastrado({
       nome, // é o mesmo de escrever nome: nome
       cargo,
       imagem,
       time,
     });
-
+    setNome("");
+    setCargo("");
+    setImagem("");
+    setTime("");
   };
 
   return (
@@ -41,7 +34,7 @@ const Formulario = (props) => {
           label="Nome"
           placeholder="Digite seu nome"
           valor={nome}
-          aoAlterado={(valor) => setNome(valor)}
+          aoAlterado={valor => setNome(valor)}
         />
 
         <CampoTexto
@@ -49,20 +42,20 @@ const Formulario = (props) => {
           label="Cargo"
           placeholder="Digite seu cargo"
           valor={cargo}
-          aoAlterado={(valor) => setCargo(valor)}
+          aoAlterado={valor => setCargo(valor)}
         />
 
         <CampoTexto
           label="Imagem"
           placeholder="Digite o endereço da imagem"
           valor={imagem}
-          aoAlterado={setImagem}
+          aoAlterado={valor => setImagem(valor)}
         />
 
         <ListaSuspensa
           obrigatorio={true}
           label="Time"
-          itens={times}
+          itens={props.times}
           valor={time}
           aoAlterado={valor => setTime(valor)}
         />
