@@ -4,7 +4,7 @@ import Botao from "../Botao";
 import { useState } from "react";
 import "./Formulario.css";
 
-const Formulario = () => {
+const Formulario = (props) => {
   const times = [
     "Programação",
     "Front-End",
@@ -20,9 +20,16 @@ const Formulario = () => {
   const [cargo, setCargo] = useState(""); // cria um objeto para ler (valor) e para escrever (setValor)
   const [imagem, setImagem] = useState("");
   const [time, setTime] = useState("");
+
   const aoSalvar = (evento) => {
-    evento.preventDefault();
-    console.log("Formulário foi submetido => ", nome, cargo, imagem, time);
+    evento.preventDefault()
+    props.aoColaboradorCadastrado({
+      nome, // é o mesmo de escrever nome: nome
+      cargo,
+      imagem,
+      time,
+    });
+
   };
 
   return (
