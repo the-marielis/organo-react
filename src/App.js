@@ -241,8 +241,10 @@ function App() {
 
   const [colaboradores, setColaboradores] = useState(inicial);
 
-  function deletarColaborador() {
-    console.log("deletando colaborador");
+  function deletarColaborador(prop) {
+    setColaboradores(
+      colaboradores.filter((colaborador) => colaborador.id !== prop)
+    );
   }
 
   function mudarCorTime(cor, id) {
